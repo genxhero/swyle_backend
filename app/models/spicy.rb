@@ -1,0 +1,14 @@
+
+#A Spicy is a type of reaction, meaning that the article has zing to it. Maybe a hint of sexiness? Represented by a chili pepper/
+class Spicy < ApplicationRecord
+    validates :user_id, uniqueness: { scope: :post_id }
+    
+    belongs_to :post, polymorphic: true,
+    primary_key: :id,
+    foreign_key: :post_id
+
+    belongs_to :user,
+    primary_key: :id, 
+    foreign_key: :user_id,
+    class_name: "User"
+end
